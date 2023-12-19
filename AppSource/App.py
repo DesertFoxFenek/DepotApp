@@ -7,8 +7,8 @@ class App:
         while(True):
             ThisInterface = InterfaceConnector.Interface()
             ThisInterface.show_depot_init_menu()
-            input()
             ThisInterface.show_operating_lines()
+            ThisInterface.program_one_by_one()
             input()
 
 Main = App()

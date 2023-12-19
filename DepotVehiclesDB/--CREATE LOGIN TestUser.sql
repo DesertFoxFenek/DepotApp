@@ -1,0 +1,5 @@
+CREATE LOGIN TestUser
+WITH PASSWORD = 'TestUser', CHECK_POLICY = ON;
+
+USE DepotAppDb
+CREATE USER TestUser FOR LOGIN TestUser

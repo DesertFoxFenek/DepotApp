@@ -1,4 +1,6 @@
 import pyodbc
+import pandas as pd
+from datetime import datetime, timedelta
 
 class DBConnectorSerivice():
     def __init__(self):
@@ -42,18 +44,11 @@ class DBConnectorSerivice():
     
     def del_data(self): pass
 
-def create_b(id,linia,brygada,cykle,pojazd,start):
-    txt = f'{id},{linia},{brygada},{cykle},{pojazd},{start}'
-    return txt
-
 Vh = DBConnectorSerivice()
 tmp_vh = Vh.fetch_data_vehicle('Zajezdnia Borek')
 
 Tb = DBConnectorSerivice()
 tmp_tb = Tb.fetch_data_timetables()
-
-import pandas as pd
-from datetime import datetime, timedelta
 
 tmp_df = []
 for i in tmp_vh:
@@ -69,19 +64,30 @@ for i in tmp_tb:
 lines_df = pd.DataFrame(tmp_df)
 lines_df.columns = ['NumerLinii', 'StartPlace', 'FinishPlace','TurnAroundTime']
 
-print(lines_df)
 # Tworzenie danych dla tabeli Przypisanie
 assignment_data = {'Id': [], 'Brygada': [],'Linia': [], 'Id(Pojazdu)': [], 'CzasStartu': []}
 
 start_time = datetime.strptime('04:00', '%H:%M')
 
+assigned_vehicles = set()
+
 for index, row in lines_df.iterrows():
     for brygada in range(1, 12):
+
+        available_vehicles = set(vehicles_df['Id']) - assigned_vehicles
+        if not available_vehicles:
+            print("Brak dostępnych pojazdów.")
+            break
+
+        selected_vehicle = min(available_vehicles)
+        assigned_vehicles.add(selected_vehicle)
+
         assignment_data['Id'].append(len(assignment_data['Id']) + 1)
         assignment_data['Brygada'].append(brygada)
         assignment_data['Linia'].append(row['NumerLinii'])
-        assignment_data['Id(Pojazdu)'].append(vehicles_df.iloc[brygada - 1]['Id'])
+        assignment_data['Id(Pojazdu)'].append(selected_vehicle)
         assignment_data['CzasStartu'].append((start_time + timedelta(minutes=(brygada - 1) * 5)).strftime('%H:%M'))
+    start_time += timedelta(minutes=3)
 
 assignment_df = pd.DataFrame(assignment_data)
 

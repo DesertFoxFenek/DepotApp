@@ -4,10 +4,10 @@ class DBConnectorSerivice():
     def __init__(self):
 
         #parametry polaczenia csii ze localhost
-        server = '.\SQLEXPRESS'
-        database = 'DepotAppDb'
-        username ='TestUser'
-        password = 'TestUser'
+        server = '.\SQLEXPRESS' #tcp:depot-app-db-server.database.windows.net,1433;
+        database = 'DepotAppDb' #DepotAppDB
+        username ='TestUser' #DesertFoxFenek
+        password = 'TestUser' #haslo Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
         self.conn_str = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Trusted_Connection=yes'
 
 

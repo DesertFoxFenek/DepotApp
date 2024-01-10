@@ -23,3 +23,37 @@
 --GO
 --EXEC sp_rename 'dbo.TimetableDB.From', 'StartPlace', 'COLUMN';
 --EXEC sp_rename 'dbo.TimetableDB.To', 'FinishPlace', 'COLUMN';
+
+--CREATE TABLE DepotAppDb.dbo.FirstDepotBrigadeTable
+--(
+--  [Id] INT NOT NULL PRIMARY KEY,
+--  [BrigadeNumber] VARCHAR(50),
+--  [Line] VARCHAR(50),
+--  [Cycles] INT,
+--  [Vehicle] INT,
+--  [StartDepotTime] TIME,
+--)
+--CREATE TABLE DepotAppDb.dbo.SecondDepotBrigadeTable
+--(
+--  [Id] INT NOT NULL PRIMARY KEY,
+--  [BrigadeNumber] VARCHAR(50),
+--  [Line] VARCHAR(50),
+--  [Cycles] INT,
+--  [Vehicle] INT,
+--  [StartDepotTime] TIME,
+--)
+--CREATE TABLE DepotAppDb.dbo.ThirdDepotBrigadeTable
+--(
+--  [Id] INT NOT NULL PRIMARY KEY,
+--  [BrigadeNumber] VARCHAR(50),
+--  [Line] VARCHAR(50),
+--  [Cycles] INT,
+--  [Vehicle] INT,
+--  [StartDepotTime] TIME,
+--)
+--CREATE TABLE DepotAppDb.dbo.FirstDepotManTable
+--(
+--  [Id] INT NOT NULL PRIMARY KEY,
+--  [Name] VARCHAR(50),
+--  [LastName] VARCHAR(50),
+--)

@@ -23,9 +23,9 @@ class DBConnectorSerivice():
 
         self.connection = pyodbc.connect(self.conn_str)
         self.cursor = self.connection.cursor()
-        self.querry = f'SELECT * FROM VehiclesTable WHERE Depot = {SQLDepotType}'
-        #self.querry = f'SELECT * FROM master.dbo.VehiclesTable'
-        self.cursor.execute(self.querry)
+        self.query = f'SELECT * FROM VehiclesTable WHERE Depot = {SQLDepotType}'
+        #self.query = f'SELECT * FROM master.dbo.VehiclesTable'
+        self.cursor.execute(self.query)
         self.data = self.cursor.fetchall()
         self.connection.close()
 
@@ -34,9 +34,11 @@ class DBConnectorSerivice():
     def fetch_data_timetables(self):
         self.connection = pyodbc.connect(self.conn_str)
         self.cursor = self.connection.cursor()
-        #self.querry = f'SELECT * FROM TimetableDB WHERE Type LIKE {depot_type}'
-        self.querry = f'SELECT * FROM TimetableDB WHERE Id = 2 OR Id = 4 OR Id = 6 OR Id = 7 OR Id = 10 OR Id = 12 OR Id = 13 OR Id = 14 OR Id = 18 OR Id = 19 OR Id = 20 OR Id = 21 OR Id = 22 OR Id = 23'
-        self.cursor.execute(self.querry)
+        #self.query = f'SELECT * FROM TimetableDB WHERE Id = 2 OR Id = 4 OR Id = 6 OR Id = 7 OR Id = 10 OR Id = 12 OR Id = 13 OR Id = 14 OR Id = 18 OR Id = 19 OR Id = 17 OR Id = 21 OR Id = 22 OR Id = 23'
+        self.query = f'SELECT * FROM TimetableDB WHERE LEN(Id) = 3 AND Id NOT IN(602,607,612)'
+        #self.query = f'SELECT * FROM TimetableDB WHERE Id = 3 OR Id = 5 OR Id = 20'
+        #self.query = f'SELECT * FROM TimetableDB WHERE Id = 1'
+        self.cursor.execute(self.query)
         self.data = self.cursor.fetchall()
         self.connection.close()
 
@@ -45,7 +47,7 @@ class DBConnectorSerivice():
     def del_data(self): pass
 
 Vh = DBConnectorSerivice()
-tmp_vh = Vh.fetch_data_vehicle('Zajezdnia Borek')
+tmp_vh = Vh.fetch_data_vehicle('Zajezdnia Obornicka')
 
 Tb = DBConnectorSerivice()
 tmp_tb = Tb.fetch_data_timetables()
@@ -72,7 +74,7 @@ start_time = datetime.strptime('04:00', '%H:%M')
 assigned_vehicles = set()
 
 for index, row in lines_df.iterrows():
-    for brygada in range(1, 12):
+    for brygada in range(1, 9):
 
         available_vehicles = set(vehicles_df['Id']) - assigned_vehicles
         if not available_vehicles:

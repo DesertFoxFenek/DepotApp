@@ -1,15 +1,45 @@
 NumerLinii,StartPlace,FinishPlace,TurnAroundTime
-2,Krzyki,Biskupin,00:40:00
-4,Oporow,Biskupin,00:45:00
-6,Krzyki,Kromera,00:35:00
-7,Poswietne,Klecina,00:50:00
-10,Lesnica,Biskupin,01:00:00
-12,Sepolno,Gornicza,00:40:00
-13,Wroclaw Nowy Dwor(P+R),Stadion Olimpijski,00:45:00
-14,Krzyki,Dworzec Nadodrze,00:45:00
-18,Gaj,Tarczynski Arena(Krolewiecka),00:55:00
-19,Zoo,Gornicza,00:40:00
-20,Oporow,Lesnica,01:00:00
-21,Gaj,Tarczynski Arena(Krolewiecka),00:45:00
-22,Pilczyce,Tarnogaj,00:40:00
-23,Kowale,Wroclaw Nowy Dwor(P+R),00:55:00
+100,Gaj-Petla,Mokry Dwor,00:20:00
+101,Kwiska,Lesnica,00:40:00
+102,Pl. Jana Pawla II,Kosmonautow(Szpital),00:55:00
+103,Pl. Jana Pawla II,Pracze Odrzanskie,00:40:00
+104,Slazowa,Redzinska,00:35:00
+105,Swiniary,Kromera,00:35:00
+106,Port Lotniczy,Dworcowa,00:45:00
+107,Krzyki,Pracze Odrzanskie,00:55:00
+108,Pracze Widawskie,Dworzec Nadodrze,00:25:00
+110,Galeria Dominikanska,Iwiny-Rondo,00:30:00
+111,Osiedle Sobieskiego,Kminkowa,01:05:00
+112,Dworzec Glowny,Krzyki,00:45:00
+113,Dworzec Glowny,Krzyki,00:40:00
+114,Galeria Dominikanska,Bienkowice,00:35:00
+115,Reja,Wojnow Petla,00:30:00
+116,Pl. Grunwaldzki,Soltysowice,00:25:00
+117,Ratyn,Lesnica,00:15:00
+118,Sepolno,Redzin,01:00:00
+119,Raclawicka,Soltysowice,01:00:00
+120,Galeria Dominikanska,Trestno(Petla),00:25:00
+121,Reja,Kielczowska-Cmentarz,00:25:00
+122,Dworzec Autobusowy,Muchobor Wielki(Roslinna),00:50:00
+123,Lesnica,Metalowcow,00:35:00
+124,Ksieza Wielkie,Wroclaw Nowy Dwor(P+R),00:55:00
+125,Brochow,Tyniecka(Petla),00:50:00
+126,Wojszycka,Kozanow,01:05:00
+127,Kozia,Zwycieska,01:10:00
+128,Wroclaw Nowy Dwor(P+R),Zakrzow,01:05:00
+129,Poswiecka(Osrodek Zdrowia),Port Lotniczy,01:00:00
+130,Polanowice,Osiedle Sobieskiego,00:30:00
+131,Reja,Litewska,00:30:00
+132,Kromera,Oporow,01:10:00
+133,Brochow,C.H. Aleja Bielany,00:55:00
+134,Ksieza Wielkie,Wroclaw Nowy Dwor(P+R),01:05:00
+142,Paprotna,Jarnolotow,01:10:00
+143,Kminkowa,Tarnogaj,01:25:00
+144,Polanowice,Zwycieska,01:00:00
+145,Sepolno,Iwiny-Rondo,00:55:00
+146,Bartoszowice,Gaj-Petla,00:50:00
+148,Lesnica,Dworcowa,00:50:00
+149,Kuzniki,Pl. Grunwaldzki,00:40:00
+150,Osiedle Sobieskiego,Litewska,00:20:00
+151,Reja,Pawlowice(Widawska),00:30:00
+152,Blacharska,Tarczynski Arena(Krolewiecka),00:40:00

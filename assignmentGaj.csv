@@ -1,4 +1,4 @@
-Id,Brygada,Linia,Id(Pojazdu),CzasStartu
+Id,BrigadeNumber,Line,Vehicle,StartDepotTime
 1,1,3,2801,04:00
 2,2,3,2802,04:05
 3,3,3,2803,04:10

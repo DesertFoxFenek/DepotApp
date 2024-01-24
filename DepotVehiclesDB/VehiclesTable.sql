@@ -24,30 +24,35 @@
 --EXEC sp_rename 'dbo.TimetableDB.From', 'StartPlace', 'COLUMN';
 --EXEC sp_rename 'dbo.TimetableDB.To', 'FinishPlace', 'COLUMN';
 
---CREATE TABLE DepotAppDb.dbo.FirstDepotBrigadeTable
+--CREATE TABLE DepotAppDb.dbo.BorekDepotBrigadeTable
 --(
 --  [Id] INT NOT NULL PRIMARY KEY,
 --  [BrigadeNumber] VARCHAR(50),
 --  [Line] VARCHAR(50),
---  [Cycles] INT,
 --  [Vehicle] INT,
 --  [StartDepotTime] TIME,
 --)
---CREATE TABLE DepotAppDb.dbo.SecondDepotBrigadeTable
+--CREATE TABLE DepotAppDb.dbo.OlbinDepotBrigadeTable
 --(
 --  [Id] INT NOT NULL PRIMARY KEY,
 --  [BrigadeNumber] VARCHAR(50),
 --  [Line] VARCHAR(50),
---  [Cycles] INT,
 --  [Vehicle] INT,
 --  [StartDepotTime] TIME,
 --)
---CREATE TABLE DepotAppDb.dbo.ThirdDepotBrigadeTable
+--CREATE TABLE DepotAppDb.dbo.GajDepotBrigadeTable
 --(
 --  [Id] INT NOT NULL PRIMARY KEY,
 --  [BrigadeNumber] VARCHAR(50),
 --  [Line] VARCHAR(50),
---  [Cycles] INT,
+--  [Vehicle] INT,
+--  [StartDepotTime] TIME,
+--)
+--CREATE TABLE DepotAppDb.dbo.ObornickaDepotBrigadeTable
+--(
+--  [Id] INT NOT NULL PRIMARY KEY,
+--  [BrigadeNumber] VARCHAR(50),
+--  [Line] VARCHAR(50),
 --  [Vehicle] INT,
 --  [StartDepotTime] TIME,
 --)

@@ -1,10 +1,20 @@
 import Depot
 import Tasks
 import datetime as dt
+import DBConnector
 
 class Interface():
     def __init__(self):
         self.brigades_list = []
+
+    def login(self):
+        print('login')
+        username = input()
+        print('password')
+        password = input()
+        LoginService = DBConnector.DBConnectorSerivice()
+        LoginService.fetch_user(username,password)
+
 
     def show_depot_init_menu(self):
         print("Inicjalizowanie zajezdni.\nPodaj numer w ktorej bedzie operowane z wybranych nizej.\n1. Zajezdnia Borek\n2. Zajezdnia Olbin\n3. Zajezdnia Gaj\n4. Zajezdnia Obornicka")
@@ -25,7 +35,11 @@ class Interface():
         self.ThisDepotTypeLines.get_lines(self.ThisDepot.DepotType)
         print(f'Znaleziono {len(self.ThisDepotTypeLines.LineList)} pasujacych linii')
 
-    def use_programed_schedule(): pass
+    def use_programed_schedule(self):
+        self.BrigadesOnLinesObj = Depot.ImportedBrigade()
+        self.BrigadesOnLines = self.BrigadesOnLinesObj.recive_brigades(self.ThisDepot.DepotName.split()[1])
+        for row in self.BrigadesOnLines:
+            print(row)
 
     def select_line(self):
         i = 1

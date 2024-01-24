@@ -1,4 +1,6 @@
 import pyodbc
+from argon2 import PasswordHasher
+from argon2.exceptions import VerifyMismatchError
 
 class DBConnectorSerivice():
     def __init__(self):
@@ -40,4 +42,38 @@ class DBConnectorSerivice():
 
         return self.data
     
+    def fetch_brigade_table(self, depot):
+        self.connection = pyodbc.connect(self.conn_str)
+        self.cursor = self.connection.cursor()
+        self.depot_table = depot+'DepotBrigadeTable'
+        self.querry = f'SELECT * FROM {self.depot_table}'
+        self.cursor.execute(self.querry)
+        self.data = self.cursor.fetchall()
+        self.connection.close()
+
+        return self.data
+    
+    def fetch_user(self,given_login,given_pass):
+        ph = PasswordHasher()
+        self.data = []
+        self.connection = pyodbc.connect(self.conn_str)
+        self.cursor = self.connection.cursor()
+        self.querry = f'SELECT * FROM Users WHERE Login = ?'
+        self.cursor.execute(self.querry, given_login)
+        self.temp = self.cursor.fetchall()
+        for i in self.temp[0]:
+            if type(i) == str:
+                i.rstrip()
+            self.data.append(i)
+
+        print(self.data, given_pass)
+        self.data_pass = ph.hash(self.data[2])
+
+        print(self.data_pass, given_pass)
+
+        try:
+            ph.verify(self.data_pass, given_pass)
+            print('sukces')
+        except VerifyMismatchError: print('unluku')
+
     def del_data(self): pass

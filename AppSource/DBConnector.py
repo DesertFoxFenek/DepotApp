@@ -1,6 +1,5 @@
 import pyodbc
-from argon2 import PasswordHasher
-from argon2.exceptions import VerifyMismatchError
+import User
 
 class DBConnectorSerivice():
     def __init__(self):
@@ -8,17 +7,17 @@ class DBConnectorSerivice():
         #parametry polaczenia csii ze localhost
         server = '.\SQLEXPRESS' #tcp:depot-app-db-server.database.windows.net,1433;
         database = 'DepotAppDb' #DepotAppDB
-        username ='TestUser' #DesertFoxFenek
-        password = 'TestUser' #haslo Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
-        self.conn_str = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Trusted_Connection=yes'
+        username = User.User.login #DesertFoxFenek
+        password = User.User.password #haslo Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
+        self.conn_str = f'DRIVER={{ODBC Driver 18 for SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Trusted_Connection=no'
 
 
 
     def fetch_data_vehicle(self,SelectedDepotType):
-        if SelectedDepotType == 'Zajezdnia Borek': SQLDepotType = 1
-        elif SelectedDepotType == 'Zajezdnia Olbin': SQLDepotType = 2
-        elif SelectedDepotType == 'Zajezdnia Gaj' : SQLDepotType = 3
-        elif SelectedDepotType == 'Zajezdnia Obornicka' : SQLDepotType = 4
+        if SelectedDepotType == 1: SQLDepotType = 1
+        elif SelectedDepotType == 2: SQLDepotType = 2
+        elif SelectedDepotType == 3 : SQLDepotType = 3
+        elif SelectedDepotType == 4 : SQLDepotType = 4
         else: return None
 
         self.connection = pyodbc.connect(self.conn_str)
@@ -52,28 +51,6 @@ class DBConnectorSerivice():
         self.connection.close()
 
         return self.data
-    
-    def fetch_user(self,given_login,given_pass):
-        ph = PasswordHasher()
-        self.data = []
-        self.connection = pyodbc.connect(self.conn_str)
-        self.cursor = self.connection.cursor()
-        self.querry = f'SELECT * FROM Users WHERE Login = ?'
-        self.cursor.execute(self.querry, given_login)
-        self.temp = self.cursor.fetchall()
-        for i in self.temp[0]:
-            if type(i) == str:
-                i.rstrip()
-            self.data.append(i)
 
-        print(self.data, given_pass)
-        self.data_pass = ph.hash(self.data[2])
-
-        print(self.data_pass, given_pass)
-
-        try:
-            ph.verify(self.data_pass, given_pass)
-            print('sukces')
-        except VerifyMismatchError: print('unluku')
 
     def del_data(self): pass

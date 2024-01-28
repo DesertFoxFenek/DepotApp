@@ -1,14 +1,15 @@
 import DBConnector
 
 class Depot:
-    def __init__(self, DepotName, DepotType):
+    def __init__(self, DepotNumber, DepotName, DepotType):
+        self.DepotNumber = DepotNumber
         self.DepotName = DepotName
         self.DepotType = DepotType
         self.VehicleList = []
 
     def get_vehicles(self):
         connectDb = DBConnector.DBConnectorSerivice()
-        self.temp_data = connectDb.fetch_data_vehicle(self.DepotName)
+        self.temp_data = connectDb.fetch_data_vehicle(self.DepotNumber)
 
         for row in self.temp_data:
             self.VehicleList.append(Vehicle(row[0],row[1],row[2]))

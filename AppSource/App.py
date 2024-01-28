@@ -10,8 +10,7 @@ class App:
     def Run(self):
         while(True):
             ThisInterface = InterfaceConnector.Interface()
-            #ThisInterface.login()
-            ThisInterface.show_depot_init_menu()
+            ThisInterface.login()
             ThisInterface.show_operating_lines()
             ThisInterface.use_programed_schedule()
             #ThisInterface.program_one_by_one()

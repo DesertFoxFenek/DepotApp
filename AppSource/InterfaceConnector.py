@@ -1,33 +1,28 @@
 import Depot
 import Tasks
 import datetime as dt
-import DBConnector
+import User
 
 class Interface():
     def __init__(self):
         self.brigades_list = []
 
     def login(self):
-        print('login')
+        print('login: ')
         username = input()
-        print('password')
+        print('password: ')
         password = input()
-        LoginService = DBConnector.DBConnectorSerivice()
-        LoginService.fetch_user(username,password)
+        self.user = User.User()
 
+        print(self.user.login_user(username,password))
+        print("Inicjalizowanie zajezdni.\nPodaj numer w ktorej bedzie operowane z wybranych nizej.")
+        for i in self.user.depots:
+            print(str(i)+'\n')
 
-    def show_depot_init_menu(self):
-        print("Inicjalizowanie zajezdni.\nPodaj numer w ktorej bedzie operowane z wybranych nizej.\n1. Zajezdnia Borek\n2. Zajezdnia Olbin\n3. Zajezdnia Gaj\n4. Zajezdnia Obornicka")
-        self.option = int(input())
-
-        if self.option == 1: self.ThisDepot = Depot.Depot('Zajezdnia Borek','Tram')
-        elif self.option == 2: self.ThisDepot = Depot.Depot('Zajezdnia Olbin','Tram')
-        elif self.option == 3: self.ThisDepot = Depot.Depot('Zajezdnia Gaj','Tram')
-        elif self.option == 4: self.ThisDepot = Depot.Depot('Zajezdnia Obornicka','Bus')
-        else: print("Podano zla wartosc")
-        
+        self.option = int(input()) - 1
+        self.depot = self.user.depots[self.option]
+        self.ThisDepot = Depot.Depot(self.depot[0],self.depot[1],self.depot[2])
         self.ThisDepot.get_vehicles()
-
         print(f'Zaladowano {self.ThisDepot.DepotName}. Oraz tabor w liczbie: {len(self.ThisDepot.VehicleList)}')
 
     def show_operating_lines(self):

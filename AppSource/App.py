@@ -3,7 +3,7 @@ import InterfaceConnector
 class App:
 
     NAME = 'DepotApp'
-    VERSION = '0.2.24.01' #wydanie.wersja.rok.miesiac
+    VERSION = '0.2.24.01CA' #wydanie.wersja.rok.miesiac.rodzaj WE=web/CA=konsola
 
     def __init__(self) -> None:
         pass
